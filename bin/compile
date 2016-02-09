@@ -14,7 +14,7 @@ database_path = "groonga/database"
 
 def detect_latest_version
   uri = "https://api.github.com/repos/groonga/groonga/releases"
-  releases = open(uri) do |json|
+  releases = open(uri, "User-Agent" => "buildpack") do |json|
     JSON.load(json)
   end
   latest_heroku_avaliable_release = releases.find do |release|
